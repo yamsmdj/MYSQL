@@ -1,10 +1,14 @@
 <?php 
- require __DIR__ . ('/utilities/header.php');
- require __DIR__ . ('/function/movies.fn.php');
- $film = findMovies($db, $_GET['id']);
-?>
+ require_once __DIR__ . ('/utilities/header.php');
+ require_once __DIR__ . ('/function/database.fn.php');
+ $db = getPDOlink($config);
 
-  <h1>Detail du film</h1>
+ require_once __DIR__ . ('function/movies.fn.php');
+ $film = findMovies($db, $_GET['id']); 
+ $title = $film['title'];
+ require_once __DIR__ . ('/utilities/header.php');
+?>
+  <h1>Detail du film <?= $title ?></h1>
   <h2><?= $film['title'] ?></h2>
   <p>année de réalisation : <?= $film['year_released'] ?></p>
   <p>par : <?= $film['director'] ?></p>
