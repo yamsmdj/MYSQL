@@ -2,8 +2,8 @@
  require_once __DIR__ . ('/utilities/header.php');
  require_once __DIR__ . ('/function/database.fn.php');
  $db = getPDOlink($config);
-
- require_once __DIR__ . ('function/movies.fn.php');
+ 
+ require_once __DIR__ . ('/function/movie.fn.php');
  $film = findMovies($db, $_GET['id']); 
  $title = $film['title'];
  require_once __DIR__ . ('/utilities/header.php');

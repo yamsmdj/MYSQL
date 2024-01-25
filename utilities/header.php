@@ -8,24 +8,23 @@ $domain = '/';
 $index_page = $domain;
 $films_page = $domain .'films.php';
 $contact_page = $domain . 'contact.php';
-$film_page = $domain .'mapage.php';
-
 
 $index_name = $domain . 'Les films de la semaine';
 $films_name = $domain . "Tous les films à l'affiche";
 $contact_name = $domain . 'Contactez-nous';
-$film_name = 'le film';
 
 $current_url = $_SERVER['SCRIPT_NAME'];
 
 if(strpos($index_page, $current_url) !== FALSE || strpos($index_page . 'index.php', $current_url) !== FALSE):
   $title = $index_name;
-elseif (strpos($films_page, $current_url) !== FALSE):
-  $title = $films_name;
-elseif (strpos($contact_page, $current_url) !== FALSE):
-  $title = $contact_name;
-endif;
-?>
+  elseif (strpos($films_page, $current_url) !== FALSE):
+    $title = $films_name;
+    elseif (strpos($contact_page, $current_url) !== FALSE):
+      $title = $contact_name;
+      
+    endif;
+    var_dump($title);
+    ?>
 
 <!DOCTYPE html>
 <html lang="FR-fr">
@@ -64,7 +63,7 @@ endif;
   <div class="container-fluid px-4 px-lg-5 position-relative h-100">
     <img src="/assets/img/onepiece.jpg" alt="image de background" class="position-absolute top-50 start-50 translate-middle h-100 w-100">
     <div class="text-center text-white position-absolute align-items-center top-50 start-50 translate-middle">
-      <h1 class="display-4 fw-bolder"><?php $title ?></h1>
+      <h1 class="display-4 fw-bolder"><?= $title ?></h1>
       <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
     </div>
   </div>
