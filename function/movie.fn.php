@@ -6,7 +6,12 @@ function findAllMovies ($db) {
     $films = $requete->fetchAll();
     return $films;
 }
-
+function findPictureByMovie($db,$currentId){
+    $sql = "SELECT * FROM `pictures` WHERE movie_id= $currentId";
+    $requete = $db->query($sql);
+    $result= $requete->fetch();
+    return $result;
+}
 function findMovies ($db, $currentId) {
     $sql = "SELECT 
     m.id, m.title, m.rating, m.year_released, 

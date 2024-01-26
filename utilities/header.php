@@ -15,15 +15,20 @@ $contact_name = $domain . 'Contactez-nous';
 
 $current_url = $_SERVER['SCRIPT_NAME'];
 
+function activeNavLink($page) {
+  if (strpos($films_page, $current_url)) {
+    return 'active';
+  }
+};
+
 if(strpos($index_page, $current_url) !== FALSE || strpos($index_page . 'index.php', $current_url) !== FALSE):
   $title = $index_name;
   elseif (strpos($films_page, $current_url) !== FALSE):
     $title = $films_name;
-    elseif (strpos($contact_page, $current_url) !== FALSE):
-      $title = $contact_name;
-      
-    endif;
-    var_dump($title);
+  elseif (strpos($contact_page, $current_url) !== FALSE):
+    $title = $contact_name;      
+endif;
+   
     ?>
 
 <!DOCTYPE html>
@@ -55,7 +60,7 @@ if(strpos($index_page, $current_url) !== FALSE || strpos($index_page . 'index.ph
        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li><a class="dropdown-item" href="/">Tous les cinemas</a></li>
           <li><hr class="dropdown-divider" /></li>
-          <li><a class="dropdown-item" href="/">Formulaire de contact</a></li>
+          <li><a class="dropdown-item " href="/">Formulaire de contact</a></li>
        </ul>
   </nav>
   
