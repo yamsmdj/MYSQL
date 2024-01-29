@@ -2,34 +2,10 @@
 require_once dirname(__DIR__) . ('/config/config.php');
 require_once dirname(__DIR__) . ('/function/database.fn.php');
 $db = getPDOlink($config);
+require_once dirname(__DIR__) . ('/config/headerConfig.php');
+require_once dirname(__DIR__) . ('/function/header.fn.php');
 
-$domain = '/';
-
-$index_page = $domain;
-$films_page = $domain .'films.php';
-$contact_page = $domain . 'contact.php';
-
-$index_name = $domain . 'Les films de la semaine';
-$films_name = $domain . "Tous les films à l'affiche";
-$contact_name = $domain . 'Contactez-nous';
-
-$current_url = $_SERVER['SCRIPT_NAME'];
-
-function activeNavLink($page) {
-  if (strpos($films_page, $current_url)) {
-    return 'active';
-  }
-};
-
-if(strpos($index_page, $current_url) !== FALSE || strpos($index_page . 'index.php', $current_url) !== FALSE):
-  $title = $index_name;
-  elseif (strpos($films_page, $current_url) !== FALSE):
-    $title = $films_name;
-  elseif (strpos($contact_page, $current_url) !== FALSE):
-    $title = $contact_name;      
-endif;
-   
-    ?>
+?>
 
 <!DOCTYPE html>
 <html lang="FR-fr">
@@ -45,6 +21,8 @@ endif;
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <title>Utopia</title>
 </head>
+
+
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
   <div class="container px-1 px-lg-1">
@@ -52,16 +30,16 @@ endif;
     <a class="navbar-brand" href="/">Cinema Utopia</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 w-100 justify-content-end">
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Accueil</a></li>
-          <li class="nav-item"><a class="nav-link" href="<?= $films_page ?>">Les Films</a></li>
-          <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Contact</a>
-       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li><a class="dropdown-item" href="/">Tous les cinemas</a></li>
-          <li><hr class="dropdown-divider" /></li>
-          <li><a class="dropdown-item " href="/">Formulaire de contact</a></li>
-       </ul>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 w-100 justify-content-end">
+            <li class="nav-item"><a class="nav-link <?php activeNavLink($index_page, $current_url) ?><?php activeNavLink('/index.php', $current_url) ?>" aria-current="page" href="/">Accueil</a></li>
+            <li class="nav-item"><a class="nav-link <?php activeNavLink($films_page, $current_url) ?>" href="<?= $films_page ?>">Les Films</a></li>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Contact</a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/">Tous les cinemas</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item " href="/">Formulaire de contact</a></li>
+        </ul>
   </nav>
   
 <header class="overflow-hidden" style="height: 700px;">

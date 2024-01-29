@@ -10,5 +10,7 @@ $films = findAllMovies($db);
       <a href="mapage.php?id=<?= $film['id'] ?>"><?= $film['title'] ?></a>
     </p>
 <?php } ?>
+<?php require "utilities/footer.php"?>
+
 </body>
 </html>
